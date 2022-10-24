@@ -14,6 +14,15 @@ function Join() {
   };
 
   const requestJoinMember = (e) => {
+    /**
+     * [회원가입 로직]
+     * 1. 아이디 중복 여부 등 유효성 검사(후순위)
+     * 2. axios를 통해 서버에 POST 요청
+     * 3. appkey 와 appsecret 으로 accessToken을 발급 받아 appkey 유효성 검사
+     * 4. accessToken 성공적으로 발급 시 DB에 회원 정보 insert 후 서버에서 OK로 응답
+     * 5. 응답 시 회원가입이 성공적으로 완료되었다는 alert 메시지 후 로그인 화면 이동
+     */
+
     alert("회원가입이 완료 되었습니다.");
     navigate("/");
   };
