@@ -13,15 +13,15 @@
 .joinbox {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 24px;
 
   /* 82cm 72cm 너무 큼 */
   width: 800px;
-  height: 720px;
+  height: 680px;
 
-  padding-top: 24px;
+  padding-top: 40px;
 
   border: 2px solid black;
   border-radius: 2.3rem;
@@ -29,8 +29,8 @@
   background-color: white;
 
   color: #154a13;
-
-  font-size: 32px;
+  font-size: 48px;
+  font-weight: bold;
 }
 
 .infocontainer {
@@ -100,6 +100,10 @@
   margin-top: 0px;
 }
 
+.infobox:nth-child(3) > div {
+  margin-left: 24px;
+}
+
 .infobox:nth-last-child(2) {
   height: 400px;
   flex-direction: column;
@@ -111,13 +115,17 @@
   justify-content: center;
 }
 
+.infobox:nth-last-child(2) > div:first-child {
+  font-weight: bold;
+}
+
 .infobox,
 .infobox > input {
   font-size: 32px;
 }
 
 .infobox > label {
-  width: 144px;
+  width: 160px;
   text-align: center;
 }
 
@@ -130,7 +138,7 @@
   text-align: center;
   line-height: 86px;
 
-  width: 300px;
+  width: 360px;
   height: 80px;
 
   border-radius: 1.6rem;
@@ -155,7 +163,7 @@
 
 .gender + span {
   display: inline-block;
-  padding: 15px 10px;
+  padding: 8px 24px;
   border: 2px solid black;
   background-color: white;
   text-align: center;
@@ -163,8 +171,94 @@
 }
 
 .gender:checked + span {
-  background-color: #113a6b;
+  background-color: #154a13;
   color: #ffffff;
+}
+
+.birth {
+  text-align: center;
+  line-height: 86px;
+
+  width: 240px;
+  height: 80px;
+
+  border-radius: 1.6rem;
+}
+
+.infobox:nth-last-child(3) {
+  height: 200px;
+}
+
+.company,
+.account {
+  text-align: center;
+  line-height: 86px;
+
+  width: 220px;
+  height: 86px;
+
+  border-radius: 1.6rem;
+  font-size: 32px;
+}
+
+.account {
+  width: 290px;
+  height: 80px;
+
+  margin-left: -16px;
+}
+
+.appinfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 72px;
+
+  height: 240px;
+  margin-top: 32px;
+}
+
+.appinfo > div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 24px;
+
+  width: 320px;
+  height: 60px;
+}
+
+.appinfo > div {
+  width: 600px;
+}
+
+.appinfo > div > label {
+  width: 160px;
+  text-align: center;
+}
+
+.appkey {
+  text-align: center;
+  line-height: 86px;
+
+  width: 360px;
+  height: 80px;
+
+  border-radius: 1.6rem;
+
+  font-size: 32px;
+}
+
+.appsecret {
+  text-align: center;
+  line-height: 86px;
+
+  width: 360px;
+  height: 80px;
+
+  border-radius: 1.6rem;
+
+  font-size: 32px;
 }
 
 .agreebox {
@@ -172,6 +266,8 @@
   height: 400px;
 
   border: 1px solid black;
+
+  font-weight: normal;
 
   overflow-y: scroll;
 }
@@ -188,11 +284,15 @@
 
 .join {
   width: 160px;
-  height: 64px;
+  height: 80px;
 
   border: 1px solid #a2a2a2;
+  box-sizing: border-box;
   border-radius: 2.3rem;
 
   text-align: center;
   align-items: center;
+
+  font-size: 32px;
+  color: #154a13;
 }
