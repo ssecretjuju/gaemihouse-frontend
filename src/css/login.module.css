@@ -1,0 +1,89 @@
+body {
+  margin: 0px;
+}
+
+.layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* 화면 크기는 어떤 크기에 최적화 할 것인지? */
+  width: 100vw;
+  height: 100vh;
+
+  background-color: white;
+}
+
+.loginbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+
+  /* 82cm 72cm 너무 큼 */
+  width: 736px;
+  height: 736px;
+
+  border: 2px solid black;
+  border-radius: 2.3rem;
+  box-sizing: border-box;
+
+  background-color: white;
+}
+
+.logo {
+  width: 216px;
+  height: 216px;
+
+  margin-top: 32px;
+}
+
+.idpwdbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  width: 600px;
+}
+
+.idpwdbox > input {
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 120px 120px;
+
+  width: 500px;
+  height: 160px;
+
+  border: 2px solid black;
+  border-radius: 1.2rem;
+
+  padding-left: 144px;
+
+  font-size: 32px;
+}
+
+.id {
+  background-image: url("../images/sample.png");
+}
+
+.pwd {
+  background-image: url("../images/sample.png");
+}
+
+.join,
+.join:visited {
+  color: #154a13;
+
+  font-size: 32px;
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 120px;
+}
