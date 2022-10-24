@@ -1,21 +1,22 @@
-import { NavLink, useNavigate } from "react-router-dom";
 import style from "./css/join.module.css";
+import { agreetext } from "./AgreeText";
+import { useSelector, useDispatch } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
+import { SET_JOIN } from "./modules/memberModules/joinModule";
 
 function Join() {
   const navigate = useNavigate();
+  const memberInfo = useSelector((state) => state.joinReducer);
+  const dispatch = useDispatch();
 
-  const agreetext = `개인정보를 보호하겠습니다. 개인정보를 보호하겠습니다.
-                    개인정보를 보호하겠습니다. 개인정보를 보호하겠습니다. 
-                    개인정보를 보호하겠습니다. 개인정보를 보호하겠습니다.
-                    개인정보를 보호하겠습니다. 개인정보를 보호하겠습니다.
-                    개인정보를 보호하겠습니다. 개인정보를 보호하겠습니다.
-                    개인정보를 보호하겠습니다. 개인정보를 보호하겠습니다. 
-                    개인정보를 보호하겠습니다. 개인정보를 보호하겠습니다.
-                    개인정보를 보호하겠습니다. 개인정보를 보호하겠습니다.
-                    개인정보를 보호하겠습니다. 개인정보를 보호하겠습니다.
-                    개인정보를 보호하겠습니다. 개인정보를 보호하겠습니다. 
-                    개인정보를 보호하겠습니다. 개인정보를 보호하겠습니다.
-                    개인정보를 보호하겠습니다. 개인정보를 보호하겠습니다.`;
+  const inputMemberInfo = (e) => {
+    dispatch({ type: [SET_JOIN], payload: e.target });
+  };
+
+  const requestJoinMember = (e) => {
+    alert("회원가입이 완료 되었습니다.");
+    navigate("/");
+  };
 
   return (
     <div className={style.layout}>
@@ -26,82 +27,137 @@ function Join() {
           <div className={style.infobox}>
             <label>아이디</label>
             <input
+              id="memberId"
               className={style.idpwd}
               type="text"
               placeholder="아이디 2자~8자 입력"
+              onChange={inputMemberInfo}
             />
           </div>
           <div className={style.infobox}>
             <label>비밀번호</label>
             <input
+              id="memberPwd"
               className={style.idpwd}
               type="password"
               placeholder="비밀번호 입력"
+              onChange={inputMemberInfo}
             />
           </div>
           <div className={style.infobox}>
             <label>이름</label>
-            <input className={style.name} type="text" placeholder="이름 입력" />
-            {/* <label>성별</label> */}
-            <label>
-              <input className={style.gender} type="radio" name="gender" />
-              <span>남</span>
-            </label>
-            <label>
-              <input className={style.gender} type="radio" name="gender" />
-              <span>여</span>
-            </label>
+            <input
+              id="memberName"
+              className={style.name}
+              type="text"
+              placeholder="이름 입력"
+              onChange={inputMemberInfo}
+            />
+            <div>
+              <label>
+                <input
+                  id="male"
+                  className={style.gender}
+                  type="radio"
+                  name="gender"
+                  onChange={inputMemberInfo}
+                />
+                <span>남</span>
+              </label>
+              <label>
+                <input
+                  id="female"
+                  className={style.gender}
+                  type="radio"
+                  name="gender"
+                  onChange={inputMemberInfo}
+                />
+                <span>여</span>
+              </label>
+            </div>
           </div>
           <div className={style.infobox}>
             <label>생년월일</label>
-            <input className={style.birth} type="date" />
+            <input
+              id="memberBirth"
+              className={style.birth}
+              type="date"
+              onChange={inputMemberInfo}
+            />
           </div>
           <div className={style.infobox}>
             <label>계좌번호</label>
-            <select className={style.company}>
+            <select
+              id="accountCompany"
+              className={style.company}
+              onChange={inputMemberInfo}
+            >
+              <option>증권사 선택</option>
               <option>한국투자증권</option>
             </select>
             <input
+              id="accountNumber"
               className={style.account}
               type="text"
               placeholder="계좌번호입력(-제외)"
+              onChange={inputMemberInfo}
             />
           </div>
           <div className={style.infobox}>
-            <label>Appkey</label>
-            <input
-              className={style.appkey}
-              type="text"
-              placeholder="Appkey 입력"
-            />
-            <label>Appsecret</label>
-            <input
-              className={style.appsecret}
-              type="text"
-              placeholder="Appsecret 입력"
-            />
+            <div className={style.appinfo}>
+              <div>
+                <label>Appkey</label>
+                <input
+                  id="appkey"
+                  className={style.appkey}
+                  type="text"
+                  placeholder="Appkey 입력"
+                  onChange={inputMemberInfo}
+                />
+              </div>
+              <div>
+                <label>Appsecret</label>
+                <input
+                  id="appsecret"
+                  className={style.appsecret}
+                  type="text"
+                  placeholder="Appsecret 입력"
+                  onChange={inputMemberInfo}
+                />
+              </div>
+            </div>
           </div>
           {/* <div>Appkey가 없으신가요? 발급받기</div> */}
           <div className={style.infobox}>
-            <div>개인정보 이용 동의서 박스</div>
+            <div>개인정보 이용 동의서</div>
             <div className={style.agreebox}>
               {agreetext}
-
               <div>
                 <label>동의</label>
-                <input className={style.agree} type="radio" name="agree" />
+                <input
+                  id="agree"
+                  className={style.agree}
+                  type="radio"
+                  name="agree"
+                  onChange={inputMemberInfo}
+                />
                 <label>비동의</label>
-                <input className={style.agree} type="radio" name="agree" />
+                <input
+                  id="disagree"
+                  className={style.agree}
+                  type="radio"
+                  name="agree"
+                  onChange={inputMemberInfo}
+                />
               </div>
             </div>
           </div>
           <div className={style.infobox}>
             <button
+              id="join"
               className={style.join}
-              onClick={() => {
-                alert("회원가입이 완료 되었습니다.");
-                navigate("/");
-              }}
+              onClick={requestJoinMember}
+              disabled={!document.getElementById("agree")?.checked}
             >
               가입
             </button>
