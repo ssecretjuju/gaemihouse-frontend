@@ -1,6 +1,16 @@
+import { useEffect, useState } from "react";
 import { Unity, useUnityContext } from "react-unity-webgl";
+import loadingImage from "./earth.gif";
 
 function Play() {
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(true);
+    }, 3500);
+  }, []);
+
   // login -> 성공 시 유니티앱 실행, 유니티 측으로 회원 토큰 보내기(아이디, 비밀번호)
   const { unityProvider } = new useUnityContext({
     loaderUrl: "Build/GaemihouseBuild.loader.js",
@@ -8,17 +18,6 @@ function Play() {
     frameworkUrl: "Build/GaemihouseBuild.framework.js",
     codeUrl: "Build/GaemihouseBuild.wasm",
   });
-
-  WebGLContextEvent.captureAllkeyboarInput = false;
-  var recaptureInputAndFocus = function () {
-    var canvas = document.getElementById("#canvas");
-    if (canvas) {
-      canvas.setAttribute("tabindex", "1");
-      canvas.focus();
-    } else setTimeout(recaptureInputAndFocus, 100);
-  };
-
-  recaptureInputAndFocus();
 
   return (
     <div
@@ -29,6 +28,16 @@ function Play() {
         background: "red",
       }}
     >
+      <img
+        style={{
+          width: "100vw",
+          height: "100vh",
+          margin: "0px",
+          padding: "0px",
+        }}
+        src={loadingImage}
+        hidden={loading}
+      />
       <a
         href="/"
         onClick={() => {
