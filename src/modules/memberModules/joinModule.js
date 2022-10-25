@@ -11,7 +11,7 @@ const initialState = [
     accountNumber: "",
     appkey: "",
     appsecret: "",
-    agree: "",
+    agreeYn: "",
   },
 ];
 
@@ -28,8 +28,10 @@ export const joinReducer = handleActions(
     [SET_JOIN]: (state, { payload }) => {
       if (payload.id == "male" || payload.id == "female") {
         state["memberGender"] = payload.id;
-      } else if (payload.id == "agree" || payload.id == "disagree") {
-        state["agree"] = payload.id;
+      } else if (payload.name == "agree") {
+        payload.id == "agree"
+          ? (state["agreeYn"] = "Y")
+          : (state["agreeYn"] = "N");
       } else {
         state[payload.id] = payload.value;
       }

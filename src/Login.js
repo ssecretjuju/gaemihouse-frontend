@@ -1,18 +1,21 @@
 import axios from "axios";
 import style from "./css/login.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { SET_LOGIN } from "./modules/memberModules/loginModule";
+import { GET_MEMBER } from "./modules/memberModules/memberModule";
 
 function Login() {
+  const loginInfo = useSelector((state) => state.loginReducer);
   const memberInfo = useSelector((state) => state.memberReducer);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const inputMemberInfo = (e) => {
     dispatch({ type: [SET_LOGIN], payload: e.target });
   };
 
-  const requestLoginMember = () => {
+  const requestLoginMember = async () => {
     /*
      * [로그인 로직]
      * 1. axios를 통해 백앤드 서버에 회원 여부 && appkey 유효 여부 확인
@@ -23,19 +26,29 @@ function Login() {
      *    1-3-2. accessToken 성공적으로 발급 시, OK로 응답
      *    1-3-3. 서버에서 OK 응답 오면 OOO님 환영합니다 alert 메시지 후 Unity App으로 이동
      */
-
-    alert("OOO님 환영합니다");
-    axios({
-      method: "GET",
-      url: "http://localhost:8080",
-      data: memberInfo.memberId,
-    });
+    await axios({
+      method: "POST",
+      url: "http://localhost:8080/auth/login",
+      data: {
+        memberId: loginInfo.memberId,
+        memberPassword: loginInfo.memberPwd,
+      },
+    })
+      .then((res) => {
+        dispatch({ type: [GET_MEMBER], payload: res.data });
+        alert(`${memberInfo.memberName}님 환영합니다`);
+        navigate("/play");
+      })
+      .catch((res) => {
+        // console.log(res);
+        alert(res.response.data.message);
+      });
   };
 
   return (
     <div className={style.layout}>
       <div className={style.loginbox}>
-        <img className={style.logo} src={require("./images/sample.png")} />
+        <img className={style.logo} src={require("./images/logo.png")} />
         <div className={style.idpwdbox}>
           <input
             name="memberId"
@@ -43,6 +56,7 @@ function Login() {
             type="text"
             placeholder="아이디 2자~8자 입력"
             maxLength="8"
+            autoComplete="off"
             onChange={inputMemberInfo}
           />
           <input
@@ -54,11 +68,7 @@ function Login() {
           />
         </div>
         <div className={style.link}>
-          <NavLink
-            className={style.join}
-            to="/play"
-            onClick={requestLoginMember}
-          >
+          <NavLink className={style.join} onClick={requestLoginMember}>
             로그인
           </NavLink>
           <NavLink className={style.join} to="/join">

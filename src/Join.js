@@ -3,17 +3,19 @@ import { agreetext } from "./AgreeText";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { SET_JOIN } from "./modules/memberModules/joinModule";
+import axios from "axios";
 
 function Join() {
-  const navigate = useNavigate();
-  const memberInfo = useSelector((state) => state.joinReducer);
+  const joinInfo = useSelector((state) => state.joinReducer);
+  const memberInfo = useSelector((state) => state.memberReducer);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const inputMemberInfo = (e) => {
     dispatch({ type: [SET_JOIN], payload: e.target });
   };
 
-  const requestJoinMember = (e) => {
+  const requestJoinMember = async (e) => {
     /**
      * [회원가입 로직]
      * 1. 아이디 중복 여부 등 유효성 검사(후순위)
@@ -23,14 +25,42 @@ function Join() {
      * 5. 응답 시 회원가입이 성공적으로 완료되었다는 alert 메시지 후 로그인 화면 이동
      */
 
-    alert("회원가입이 완료 되었습니다.");
-    navigate("/");
+    await axios({
+      method: "POST",
+      url: "http://localhost:8080/auth/signup",
+      data: {
+        memberId: joinInfo.memberId,
+        memberPassword: joinInfo.memberPwd,
+        memberName: joinInfo.memberName,
+        memberSex: joinInfo.memberGender,
+        memberBirth: joinInfo.memberBirth,
+        stockFirm: joinInfo.accountCompany,
+        accountNum: joinInfo.accountNumber,
+        appKey: joinInfo.appkey,
+        appSecret: joinInfo.appsecret,
+        termsAgreementYn: joinInfo.agreeYn,
+      },
+    })
+      .then((res) => {
+        alert("회원가입이 완료 되었습니다.");
+        navigate("/");
+      })
+      .catch((res) => {
+        console.log(res);
+        switch (res.response.status) {
+          case 400:
+            alert(res.response.data.message);
+            break;
+          case 500:
+            alert("모든 정보를 입력해주세요.");
+            break;
+        }
+      });
   };
 
   return (
     <div className={style.layout}>
       <div className={style.joinbox}>
-        {/* <NavLink to="/">로그인화면 돌아가기</NavLink> */}
         회원가입
         <div className={style.infocontainer}>
           <div className={style.infobox}>
