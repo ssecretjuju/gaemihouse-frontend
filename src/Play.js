@@ -8,7 +8,7 @@ function Play() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(true);
-    }, 3500);
+    }, 3400);
   }, []);
 
   // login -> 성공 시 유니티앱 실행, 유니티 측으로 회원 토큰 보내기(아이디, 비밀번호)
@@ -25,7 +25,7 @@ function Play() {
         width: "100vw",
         height: "100vh",
         overflow: "hidden",
-        background: "red",
+        background: "black",
       }}
     >
       <img
@@ -38,14 +38,14 @@ function Play() {
         src={loadingImage}
         hidden={loading}
       />
-      <a
+      {/* <a
         href="/"
         onClick={() => {
           alert("프로그램을 종료합니다. 로그인 화면으로 이동합니다.");
         }}
       >
-        {/* 종료 */}
-      </a>
+        종료
+      </a> */}
       <Unity
         unityProvider={unityProvider}
         style={{
