@@ -4,17 +4,29 @@
   align-items: center;
 
   /* 화면 크기는 어떤 크기에 최적화 할 것인지? */
-  width: 100vw;
+  width: 1920px;
   height: 100vh;
 
   background-color: white;
+}
+
+.layout * {
+  color: #154a13;
 }
 
 .layout input[type="text"],
 .layout input[type="password"],
 .layout input[type="date"],
 .layout select {
-  border: 2px solid black;
+  border: 3px solid black;
+
+  color: black;
+  font-weight: bold;
+}
+
+.layout ::placeholder {
+  color: black;
+  font-weight: bold;
 }
 
 .joinbox {
@@ -22,16 +34,15 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 24px;
+  gap: 32px;
 
-  /* 82cm 72cm 너무 큼 */
-  width: 800px;
-  height: 680px;
+  width: 1135px;
+  height: 872px;
 
   padding-top: 40px;
 
   border: 2px solid black;
-  border-radius: 2.3rem;
+  border-radius: 3.3rem;
 
   background-color: white;
 
@@ -40,13 +51,20 @@
   font-weight: bold;
 }
 
+.joinbox label {
+  font-weight: bold;
+}
+
 .infocontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  gap: 24px;
+  gap: 30px;
 
   flex-wrap: nowrap;
-  width: 802px;
-  height: 560px;
+  width: 1139px;
+  height: 652px;
 
   border-radius: 2.3rem;
 
@@ -54,31 +72,33 @@
 }
 
 .infocontainer::-webkit-scrollbar,
-.agreebox::-webkit-scrollbar {
+.agreetext::-webkit-scrollbar {
   width: 32px;
-  height: 0px;
 }
 
 .infocontainer::-webkit-scrollbar-thumb {
   background-image: url("../images/scrollbar1.png");
-  background-size: contain;
+  background-size: 32px 100%;
   background-repeat: no-repeat;
 }
 
-.agreebox::-webkit-scrollbar-thumb {
+.agreetext::-webkit-scrollbar-thumb {
   background-image: url("../images/scrollbar2.png");
-  background-size: 100% 100%;
+  background-size: 33px 102%;
   background-repeat: no-repeat;
+  height: 30%;
 }
 
 .infocontainer::-webkit-scrollbar-track,
-.agreebox::-webkit-scrollbar-track {
+.agreetext::-webkit-scrollbar-track {
   background-color: white;
-  border: 2px solid black;
+  border-right: 2px solid black;
+  border-left: 2px solid black;
+  overflow: hidden;
 }
 
 .infocontainer::-webkit-scrollbar-button:start:decrement,
-.agreebox::-webkit-scrollbar-button:start:decrement {
+.agreetext::-webkit-scrollbar-button:start:decrement {
   display: block;
   height: 32px;
 
@@ -88,10 +108,9 @@
 }
 
 .infocontainer::-webkit-scrollbar-button:end:increment,
-.agreebox::-webkit-scrollbar-button:end:increment {
+.agreetext::-webkit-scrollbar-button:end:increment {
   display: block;
   height: 32px;
-
   background-image: url("../images/expand-down.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -103,11 +122,10 @@
   align-items: center;
   gap: 24px;
 
-  width: 780px;
-  height: 120px;
+  width: 1000px;
+  height: 110px;
 
   padding-left: 40px;
-  margin-top: 24px;
 
   box-sizing: border-box;
 }
@@ -125,10 +143,11 @@
 }
 
 .infobox:nth-last-child(2) {
-  height: 400px;
+  height: 600px;
   flex-direction: column;
 
   justify-content: center;
+  margin-top: 64px;
 }
 
 .infobox:last-child {
@@ -154,12 +173,22 @@
   text-align: center;
 }
 
-.idpwd {
+.id {
   text-align: center;
-  line-height: 86px;
+  line-height: 108px;
 
-  width: 360px;
-  height: 80px;
+  width: 437px;
+  height: 92px;
+
+  border-radius: 1.6rem;
+}
+
+.pwd {
+  text-align: center;
+  line-height: 108px;
+
+  width: 467px;
+  height: 100px;
 
   border-radius: 1.6rem;
 }
@@ -168,25 +197,23 @@
   text-align: center;
   line-height: 86px;
 
-  width: 200px;
-  height: 80px;
+  width: 300px;
+  height: 92px;
 
   border-radius: 1.6rem;
 }
 
 .gender {
-  width: 28px;
-  height: 28px;
-
   display: none;
 }
 
 .gender + span {
   display: inline-block;
-  padding: 8px 24px;
-  border: 2px solid black;
+  padding: 15px 38.5px;
+  border: 3px solid black;
   background-color: white;
   margin: -1px;
+  font-weight: bold;
   text-align: center;
   cursor: pointer;
 }
@@ -200,14 +227,10 @@
   text-align: center;
   line-height: 86px;
 
-  width: 240px;
-  height: 80px;
+  width: 330px;
+  height: 100px;
 
   border-radius: 1.6rem;
-}
-
-.infobox:nth-last-child(3) {
-  height: 200px;
 }
 
 .company,
@@ -215,28 +238,29 @@
   text-align: center;
   line-height: 86px;
 
-  width: 220px;
-  height: 86px;
+  width: 342px;
+  height: 100px;
 
   border-radius: 1.6rem;
   font-size: 32px;
 }
 
 .account {
-  width: 290px;
-  height: 80px;
+  width: 332px;
+  height: 92px;
 
-  margin-left: -16px;
+  margin-left: -8px;
 }
 
 .appinfo {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 72px;
+  gap: 64px;
 
-  height: 240px;
-  margin-top: 32px;
+  width: 1020px;
+  /* height: 240px; */
+  margin-top: 8px;
 }
 
 .appinfo > div {
@@ -249,8 +273,8 @@
   height: 60px;
 }
 
-.appinfo > div {
-  width: 600px;
+.appinfo > div:nth-last-child(2) {
+  width: 800px;
 }
 
 .appinfo > div > label {
@@ -258,57 +282,137 @@
   text-align: center;
 }
 
+.appinfo > div:first-child > label {
+  margin-left: 16px;
+}
+
+.appinfo > div:last-child > label {
+  margin-left: 16px;
+}
+
 .appkey {
   text-align: center;
   line-height: 86px;
 
-  width: 360px;
-  height: 80px;
+  width: 332px;
+  height: 92px;
+
+  border-radius: 1.6rem;
+  margin-left: 16px;
+
+  font-size: 32px;
+}
+
+.applink {
+  text-align: center;
+  line-height: 92px;
+
+  width: 332px;
+  height: 102px;
 
   border-radius: 1.6rem;
 
   font-size: 32px;
+  font-weight: bold;
+  text-decoration: underline;
+
+  cursor: pointer;
+}
+
+.applink:hover {
+  background-color: #154a13;
+  color: white;
 }
 
 .appsecret {
   text-align: center;
   line-height: 86px;
 
-  width: 360px;
-  height: 80px;
+  width: 332px;
+  height: 92px;
 
+  margin-left: 1px;
   border-radius: 1.6rem;
 
   font-size: 32px;
 }
 
-.agreebox {
-  width: 704px;
-  height: 400px;
+.agreetext {
+  width: 889px;
+  height: 300px;
 
-  border: 2px solid black;
-  border-radius: 0.5rem;
-
-  font-size: 18px;
-  font-weight: normal;
+  margin-right: -2px;
 
   white-space: pre-wrap;
   overflow-y: scroll;
+  /* background-color: aquamarine; */
+}
+
+.agreebox {
+  width: 894px;
+  height: 388px;
+
+  border: 3px solid black;
+  border-radius: 1.3rem;
+  box-sizing: border-box;
+
+  font-size: 18px;
+  font-weight: normal;
 }
 
 .agreebox > div {
   float: right;
-  margin-top: 64px;
+  margin-top: 32px;
 }
 
-.agreebox > div > input {
-  width: 18px;
-  height: 18px;
+.agreebox > div:last-child {
+  margin-top: 10px;
+  margin-right: 4px;
+}
+
+.agreebox > div > input,
+.agreebox > div > label {
+  width: 24px;
+  height: 24px;
+
+  font-size: 24px;
+}
+
+input[type="radio"]:checked {
+  background-image: url("../images/checkedbox.png");
+}
+
+input[type="radio"] {
+  background-image: url("../images/uncheckedbox.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  appearance: none;
 }
 
 .join {
-  width: 160px;
-  height: 80px;
+  background-color: #154a13;
+
+  width: 284px;
+  height: 113px;
+
+  border: 1px solid #a2a2a2;
+  box-sizing: border-box;
+  border-radius: 2.3rem;
+
+  text-align: center;
+  align-items: center;
+
+  font-size: 32px;
+  color: white;
+
+  cursor: pointer;
+}
+
+.join:disabled {
+  background-color: white;
+
+  width: 284px;
+  height: 113px;
 
   border: 1px solid #a2a2a2;
   box-sizing: border-box;
@@ -319,4 +423,6 @@
 
   font-size: 32px;
   color: #154a13;
+
+  cursor: auto;
 }

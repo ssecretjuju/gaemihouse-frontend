@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { SET_JOIN } from "./modules/memberModules/joinModule";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 function Join() {
   const joinInfo = useSelector((state) => state.joinReducer);
@@ -27,7 +28,7 @@ function Join() {
 
     await axios({
       method: "POST",
-      url: "http://localhost:8080/auth/signup",
+      url: `http://${process.env.REACT_APP_RESTAPI_IP}:8080/auth/signup`,
       data: {
         memberId: joinInfo.memberId,
         memberPassword: joinInfo.memberPwd,
@@ -42,17 +43,43 @@ function Join() {
       },
     })
       .then((res) => {
-        alert("회원가입이 완료 되었습니다.");
-        navigate("/");
+        Swal.fire({
+          title: "회원가입 성공",
+          text: `회원가입이 완료 되었습니다.`,
+          icon: "success",
+          confirmButtonColor: "#154a13",
+          confirmButtonText: "확인",
+        }).then(() => {
+          navigate("/");
+        });
+        // alert("회원가입이 완료 되었습니다.");
+        // navigate("/");
       })
       .catch((res) => {
         console.log(res);
         switch (res.response.status) {
           case 400:
-            alert(res.response.data.message);
+            Swal.fire({
+              title: "회원가입 실패",
+              text: `${res.response.data.message}`,
+              icon: "error",
+              confirmButtonColor: "#154a13",
+              confirmButtonText: "확인",
+            });
+            // alert(res.response.data.message);
             break;
           case 500:
-            alert("모든 정보를 입력해주세요.");
+            Swal.fire({
+              title: "회원가입 실패",
+              text: `모든 정보를 입력해주세요.`,
+              icon: "error",
+              confirmButtonColor: "#154a13",
+              confirmButtonText: "확인",
+            });
+            // alert("모든 정보를 입력해주세요.");
+            break;
+          default:
+            alert("예상치 못한 에러 발생");
             break;
         }
       });
@@ -67,9 +94,10 @@ function Join() {
             <label>아이디</label>
             <input
               id="memberId"
-              className={style.idpwd}
+              className={style.id}
               type="text"
               placeholder="아이디 2자~8자 입력"
+              maxLength="8"
               onChange={inputMemberInfo}
             />
           </div>
@@ -77,7 +105,7 @@ function Join() {
             <label>비밀번호</label>
             <input
               id="memberPwd"
-              className={style.idpwd}
+              className={style.pwd}
               type="password"
               placeholder="비밀번호 입력"
               onChange={inputMemberInfo}
@@ -153,6 +181,16 @@ function Join() {
                   placeholder="Appkey 입력"
                   onChange={inputMemberInfo}
                 />
+                <a
+                  className={style.applink}
+                  onClick={() => {
+                    window.open(
+                      "https://securities.koreainvestment.com/main/member/login/login.jsp?returnUrl=%2Fmain%2Fcustomer%2Fsystemdown%2FRestAPIService.jsp&isXecurePass=Y"
+                    );
+                  }}
+                >
+                  Appkey 발급받기
+                </a>
               </div>
               <div>
                 <label>Appsecret</label>
@@ -166,11 +204,10 @@ function Join() {
               </div>
             </div>
           </div>
-          {/* <div>Appkey가 없으신가요? 발급받기</div> */}
           <div className={style.infobox}>
             <div>개인정보 이용 동의서</div>
             <div className={style.agreebox}>
-              {agreetext}
+              <div className={style.agreetext}>{agreetext}</div>
               <div>
                 <label>동의</label>
                 <input
@@ -180,7 +217,7 @@ function Join() {
                   name="agree"
                   onChange={inputMemberInfo}
                 />
-                <label>비동의</label>
+                <label>{"  "}비동의</label>
                 <input
                   id="disagree"
                   className={style.agree}
