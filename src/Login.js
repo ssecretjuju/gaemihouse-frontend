@@ -37,7 +37,7 @@ function Login() {
       .then((res) => {
         dispatch({ type: [GET_MEMBER], payload: res.data });
         alert(`${memberInfo.memberName}님 환영합니다`);
-        navigate("/play");
+        navigate("/play", {state: {"accessToken" : memberInfo.accessToken}});
       })
       .catch((res) => {
         // console.log(res);

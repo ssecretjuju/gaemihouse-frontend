@@ -1,9 +1,12 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Unity, useUnityContext } from "react-unity-webgl";
 import loadingImage from "./earth.gif";
 
 function Play() {
   const [loading, setLoading] = useState(false);
+  const loation = useLocation();
 
   useEffect(() => {
     setTimeout(() => {
@@ -38,14 +41,33 @@ function Play() {
         src={loadingImage}
         hidden={loading}
       />
-      {/* <a
-        href="/"
-        onClick={() => {
-          alert("프로그램을 종료합니다. 로그인 화면으로 이동합니다.");
+      <a
+        // href="/"
+        onClick={async() => {
+          console.log(loation.state.accessToken)
+    await axios({
+      method: "GET",
+      url: "http://localhost:8080/member/aa",
+      headers:{
+        "Content-Type": "application/json",
+        "Accept": "*/*",
+        "Authorization": "Bearer " + loation.state.accessToken
+      }
+      
+    })
+      .then((res) => {
+        console.log(res)
+
+      })
+      .catch((res) => {
+        // console.log(res);
+        alert(res.response.data.message);
+      });
+          // alert("프로그램을 종료합니다. 로그인 화면으로 이동합니다.");
         }}
       >
         종료
-      </a> */}
+      </a>
       <Unity
         unityProvider={unityProvider}
         style={{
