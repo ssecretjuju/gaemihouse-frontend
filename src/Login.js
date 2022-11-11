@@ -27,6 +27,7 @@ function Login() {
      *    1-3-2. accessToken 성공적으로 발급 시, OK로 응답
      *    1-3-3. 서버에서 OK 응답 오면 OOO님 환영합니다 alert 메시지 후 Unity App으로 이동
      */
+
     if (!loginInfo.memberId) {
       Swal.fire({
         title: "로그인 실패",
