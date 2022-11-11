@@ -1,0 +1,120 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>12</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>0</x><y>1248</y><w>336</w><h>108</h></coordinates><panel_attributes>*Community
+--
+- communityInfo : CommunityInfo 
+- memberInfo : MemberInfo
+- shareholderRoomInfo : ShareHolderRoomInfo</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1164</x><y>1248</y><w>252</w><h>108</h></coordinates><panel_attributes>*StockBoard
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>876</y><w>288</w><h>120</h></coordinates><panel_attributes>*EmotionBoard
+--
+- emotionBoardInfo : EmotionBoardInfo
+- emotion : Emotion</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>480</y><w>288</w><h>72</h></coordinates><panel_attributes>*Avatar
+--
+- memberInfo : MemberInfo
+- avatarInfo : AvartartInfo</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>768</x><y>876</y><w>336</w><h>132</h></coordinates><panel_attributes>*Chatting
+--
+- chattingInfo : ChattingInfo
+- memberInfo : MemberInfo
+- shareHolderRoomInfo : ShareHolderRoomInfo</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>96</x><y>1992</y><w>336</w><h>120</h></coordinates><panel_attributes>*Comment
+--
+- communityInfo : CommunityInfo
+- memberInfo : MemberInfo
+- commentInfo : CommentInfo</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>996</x><y>2112</y><w>324</w><h>120</h></coordinates><panel_attributes>*Notice
+--
+- noticeCode : int
+- noticeTitle : String
+- noticeContent: String
+- registDate : Date</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>804</x><y>1992</y><w>252</w><h>108</h></coordinates><panel_attributes>*Npc
+--
+- npcCode : int
+- npcName : String
+- noticeInfo : Notice
+- guideInfo : Guide</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>0</x><y>0</y><w>120</w><h>36</h></coordinates><panel_attributes>Entity Design</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>768</x><y>36</y><w>372</w><h>120</h></coordinates><panel_attributes>*InternalMap
+--
+- internalMapInfo : InternalMapInfo
+- shareHolderRoomInfo : &lt;List&gt;ShareHolderRoomInfo
+- internalObject : &lt;List&gt;InternalObject</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1068</x><y>1992</y><w>252</w><h>108</h></coordinates><panel_attributes>*Guide
+--
+- guideCode : int
+- guideTitle : String
+- guideContent: String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>300</x><y>876</y><w>312</w><h>120</h></coordinates><panel_attributes>Emotion
+--
+- emotionCode : int
+- emotionName : String
+- emotionValue : int
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1236</x><y>480</y><w>348</w><h>144</h></coordinates><panel_attributes>ShareholderRoomMember
+--
+- shareHolderRoomMemberCode : int
+- shareHolderRoomInfo : ShareHolderRoomInfo
+- pesonalYield : int
+- joinEvaluateProperty : int
+- memberInfo : &lt;List&gt;MemberInfo
+- accountInfo : AccountInfo</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>768</x><y>480</y><w>456</w><h>144</h></coordinates><panel_attributes>*ShareholderRoom
+--
+- shareHolderRoomInfo : ShareHolderRoomInfo
+- shareHolderRoomMemberInfo : ShareHolderRoomMemberInfo</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>768</x><y>168</y><w>372</w><h>108</h></coordinates><panel_attributes>InternalObject
+--
+- internalObjectId : String
+- internalObjectName : String
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>36</y><w>288</w><h>132</h></coordinates><panel_attributes>*Member
+--
+- memberInfo : MemberInfo
+- accountInfo : AccountInfo
+- termsAgreementYn : TermsAgreement
+- reportCount : ReportCount
+- blacklistYn : BlackList
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>180</y><w>288</w><h>204</h></coordinates><panel_attributes>MemberInfo
+--
+- memberCode : int 
+- memberId : String 
+- memberPassword : String
+- memberRole : String
+- memberName : String
+- memberNickname : String
+- memberSex : String
+- memberBirth : String
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>300</x><y>36</y><w>312</w><h>132</h></coordinates><panel_attributes>AccountInfo
+--
+- stockFirm : String
+- accountNum : String
+- appKey : String
+- appSecret : String
+- appKeyExpiresin : Date
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>300</x><y>180</y><w>312</w><h>60</h></coordinates><panel_attributes>TermsAgreement
+--
+- termsAgreementYn : String
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>300</x><y>252</y><w>312</w><h>60</h></coordinates><panel_attributes>ReportCount
+--
+- reportCount : int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>300</x><y>324</y><w>312</w><h>60</h></coordinates><panel_attributes>BlackList
+--
+- blacklistYn : String
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>300</x><y>480</y><w>312</w><h>192</h></coordinates><panel_attributes>AvatarInfo
+--
+- avatarCode : int
+- face : String
+- hair : String
+- clothes : String
+- pants : String
+- shoes : String
+
+* 커스터마이징 대상은 따로 클래스로 분리할 것</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1152</x><y>36</y><w>336</w><h>120</h></coordinates><panel_attributes>InternalMapInfo
+--
+- internalMapId : InternalMapInfo</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>768</x><y>600</y><w>456</w><h>132</h></coordinates><panel_attributes>ShareholderRoomInfo
+--
+- shareHolderRoomCode : int
+- limitedNumber : int
+- registedNumber : int
+- shareHolderRoomYileld : ShareHolderRoomYield</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>1008</y><w>288</w><h>120</h></coordinates><panel_attributes>EmotionBoardInfo
+--
+- emotionBoardCode : int
+- registDate : Date</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>348</x><y>1248</y><w>336</w><h>108</h></coordinates><panel_attributes>CommunityInfo
+--
+- communityCode : int
+- communityTitle : String
+- communityContent : String
+- registDatre: Date</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>444</x><y>1992</y><w>336</w><h>120</h></coordinates><panel_attributes>CommentInfo
+--
+- commentCode : int
+- commentContent: String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>768</x><y>1248</y><w>288</w><h>108</h></coordinates><panel_attributes>*BlackBoard
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1116</x><y>876</y><w>348</w><h>132</h></coordinates><panel_attributes>ChattingInfo
+--
+- chattingTime : Date
+- chattingContent : String</panel_attributes><additional_attributes></additional_attributes></element></diagram>

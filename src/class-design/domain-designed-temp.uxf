@@ -1,0 +1,111 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>7</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>602</x><y>147</y><w>147</w><h>343</h></coordinates><panel_attributes>*Member
+--
+- memberCode: int 
+- memberId: String 
+- memberPassword: String
+- memberRole: String
+- memberName: String
+- memberSex: String
+- memberBirth: String
+- stockFirm: String
+- accountNum: String
+- appKey: String
+- appSecret: String
+- appKeyExpiresin: Date
+- termsAgreementYn: String
+- reportCount: int
+- blacklistYn: String
+--
++ getMemberCode():  int 
++ getMemberId(): String
++ getMemberPassword(): String
++ getMemberRole(): String
++ getMemberName(): String
++ getMemberSex(): String
++ getMemberBirth(): String
++ getStockFirm(): String
++ getAccountNum(): String
++ getAppKey(): String
++ getAppSecret(): String
++ getAppKeyExpiresin(): Date
++ getTermsAgreementYn(): String
++ getReportCount(): int
++ getBlacklistYn(): String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>602</x><y>525</y><w>147</w><h>98</h></coordinates><panel_attributes>*Community
+--
+- communityCode : int
+- communityTitle : String
+- communityContent : String
+- registDatre: Date
+- memberInfo : String
+- shareholderRoomInfo : ShareHolderRoomInfo
+- views : int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1043</x><y>119</y><w>147</w><h>49</h></coordinates><panel_attributes>*StockBoard
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>861</x><y>294</y><w>147</w><h>49</h></coordinates><panel_attributes>*EmotionBoard
+--
+- emotionBoardCode : int
+- emotionInfo : EmotionInfo
+- registDate : Date
+- </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>861</x><y>147</y><w>147</w><h>105</h></coordinates><panel_attributes>*Avatar
+--
+- memberInfo : MemberInfo
+- avatarCode : int
+- nickname : String 
+- face : String
+- hair : String
+- clothes : String
+- pants : String
+- shoes : String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>343</x><y>343</y><w>147</w><h>77</h></coordinates><panel_attributes>*Chatting
+--
+- chattingTime : Date
+- avatarInfo : AvatarInfo
+- memberInfo : MemberInfo
+- chattingContent : String
+- shareHolderRoomInfo : ShareHolderRoomInfo</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>819</x><y>539</y><w>147</w><h>70</h></coordinates><panel_attributes>*Comment
+--
+- communityInfo : CommunityInfo
+- memberInfo : MemberInfo
+- commentCode : int
+- commentContent: String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>602</x><y>21</y><w>147</w><h>70</h></coordinates><panel_attributes>*Notice
+--
+- noticeCode : int
+- noticeTitle : String
+- noticeContent: String
+- registDate : Date</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>784</x><y>21</y><w>147</w><h>63</h></coordinates><panel_attributes>*Npc
+--
+- npcCode : int
+- npcName : String
+- noticeInfo : Notice
+- guideInfo : Guide</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>742</x><y>161</y><w>133</w><h>28</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;170;20</additional_attributes></element><element><id>Relation</id><coordinates><x>483</x><y>350</y><w>140</w><h>35</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;30;180;10</additional_attributes></element><element><id>Relation</id><coordinates><x>546</x><y>518</y><w>70</w><h>49</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;80;50</additional_attributes></element><element><id>Relation</id><coordinates><x>665</x><y>483</y><w>21</w><h>56</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>665</x><y>84</y><w>21</w><h>77</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>742</x><y>574</y><w>91</w><h>21</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>10;10;110;10</additional_attributes></element><element><id>Relation</id><coordinates><x>406</x><y>413</y><w>21</w><h>91</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>742</x><y>35</y><w>56</w><h>28</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;60;20</additional_attributes></element><element><id>Text</id><coordinates><x>0</x><y>0</y><w>70</w><h>14</h></coordinates><panel_attributes>Domain Design</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>448</x><y>434</y><w>168</w><h>70</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;80;220;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>357</x><y>63</y><w>196</w><h>56</h></coordinates><panel_attributes>*InternalMap
+--
+- shareHolderRoomInfo : ShareHolderRoomInfo
+- internalBuilding : InternalInfo
+- internalObjectInfo : InternalObjectInfo</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1029</x><y>14</y><w>147</w><h>56</h></coordinates><panel_attributes>*Guide
+--
+- guideCode : int
+- guideTitle : String
+- guideContent: String</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>924</x><y>35</y><w>119</w><h>28</h></coordinates><panel_attributes></panel_attributes><additional_attributes>150;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>854</x><y>434</y><w>147</w><h>56</h></coordinates><panel_attributes>*Emotion
+--
+- emotionCode : int
+- emotionName : String
+- emotinoValue : int
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>294</x><y>518</y><w>70</w><h>28</h></coordinates><panel_attributes></panel_attributes><additional_attributes>80;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>98</x><y>497</y><w>203</w><h>77</h></coordinates><panel_attributes>*ShareholderRoomMember
+--
+- shareHolderRoomMemberCode : int
+- shareHolderRoomInfo : ShareHolderRoomInfo
+-  pesonalYield : int
+- joinEvaluateProperty : int
+- accountInfo : AccountInfo</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>350</x><y>490</y><w>203</w><h>77</h></coordinates><panel_attributes>*ShareholderRoom
+--
+- shareHolderRoomCode : int
+- shareHolderRoomMemberInfo : ShareHolderRoomMemberInfo
+- limitedNumber : int
+- currentNumber : int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>189</x><y>63</y><w>147</w><h>63</h></coordinates><panel_attributes>*InternalBuilding
+--
+- shareHolderRoom : ShareHolderRoom
+- internalBuildingId : String
+- internalBuildingCode :  int
+- internalBuildingPosition : String </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>189</x><y>133</y><w>147</w><h>49</h></coordinates><panel_attributes>*internalObjectInfo
+--
+- internalObjectId : String
+- internalObjectName : String
+- internalObjectPosition : String
+</panel_attributes><additional_attributes></additional_attributes></element></diagram>
