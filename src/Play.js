@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Unity, useUnityContext } from "react-unity-webgl";
-import loadingImage from "./earth.gif";
+import loadingImage from "./images/earth.gif";
 
 function Play() {
   const [loading, setLoading] = useState(false);
@@ -11,7 +11,7 @@ function Play() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(true);
-    }, 3400);
+    }, 6000);
   }, []);
 
   // login -> 성공 시 유니티앱 실행, 유니티 측으로 회원 토큰 보내기(아이디, 비밀번호)
@@ -64,6 +64,7 @@ function Play() {
         alert(res.response.data.message);
       });
           // alert("프로그램을 종료합니다. 로그인 화면으로 이동합니다.");
+
         }}
       >
         종료

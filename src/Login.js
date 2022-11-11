@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { SET_LOGIN } from "./modules/memberModules/loginModule";
 import { GET_MEMBER } from "./modules/memberModules/memberModule";
+import Swal from "sweetalert2";
 
 function Login() {
   const loginInfo = useSelector((state) => state.loginReducer);
@@ -26,23 +27,67 @@ function Login() {
      *    1-3-2. accessToken 성공적으로 발급 시, OK로 응답
      *    1-3-3. 서버에서 OK 응답 오면 OOO님 환영합니다 alert 메시지 후 Unity App으로 이동
      */
-    await axios({
-      method: "POST",
-      url: "http://localhost:8080/auth/login",
-      data: {
-        memberId: loginInfo.memberId,
-        memberPassword: loginInfo.memberPwd,
-      },
-    })
-      .then((res) => {
-        dispatch({ type: [GET_MEMBER], payload: res.data });
-        alert(`${memberInfo.memberName}님 환영합니다`);
-        navigate("/play", {state: {"accessToken" : memberInfo.accessToken}});
-      })
-      .catch((res) => {
-        // console.log(res);
-        alert(res.response.data.message);
+
+    if (!loginInfo.memberId) {
+      Swal.fire({
+        title: "로그인 실패",
+        text: `아이디를 입력하세요.`,
+        icon: "error",
+        confirmButtonColor: "#154a13",
+        confirmButtonText: "확인",
       });
+      // alert("아이디를 입력하세요.");
+    } else if (!loginInfo.memberPwd) {
+      Swal.fire({
+        title: "로그인 실패",
+        text: `비밀번호를 입력하세요.`,
+        icon: "error",
+        confirmButtonColor: "#154a13",
+        confirmButtonText: "확인",
+      });
+      // alert("비밀번호를 입력하세요.");
+    } else {
+      console.log(loginInfo.memberId);
+      await axios({
+        method: "POST",
+        url: `http://${process.env.REACT_APP_RESTAPI_IP}:8080/auth/login`,
+        data: {
+          memberId: loginInfo.memberId,
+          memberPassword: loginInfo.memberPwd,
+        },
+      })
+        .then((res) => {
+          dispatch({ type: [GET_MEMBER], payload: res.data });
+          Swal.fire({
+            title: "로그인 성공",
+            text: `${memberInfo.memberName}님 환영합니다.`,
+            icon: "success",
+            confirmButtonColor: "#154a13",
+            confirmButtonText: "확인",
+          }).then(() => {
+            navigate("/play");
+          });
+          // alert(`${memberInfo.memberName}님 환영합니다`);
+          // navigate("/play");
+        })
+        .catch((res) => {
+          // console.log(res);
+          Swal.fire({
+            title: "로그인 실패",
+            text: `${res.response.data.message}`,
+            icon: "error",
+            confirmButtonColor: "#154a13",
+            confirmButtonText: "확인",
+          });
+          // alert(res.response.data.message);
+        });
+    }
+  };
+
+  const onKeyUpHandler = () => {
+    if (window.event.keyCode == 13) {
+      requestLoginMember();
+    }
   };
 
   return (
@@ -54,7 +99,7 @@ function Login() {
             name="memberId"
             className={style.id}
             type="text"
-            placeholder="아이디 2자~8자 입력"
+            placeholder="아이디"
             maxLength="8"
             autoComplete="off"
             onChange={inputMemberInfo}
@@ -63,12 +108,13 @@ function Login() {
             name="memberPwd"
             className={style.pwd}
             type="password"
-            placeholder="비밀번호 입력"
+            placeholder="비밀번호"
             onChange={inputMemberInfo}
+            onKeyUp={onKeyUpHandler}
           />
         </div>
         <div className={style.link}>
-          <NavLink className={style.join} onClick={requestLoginMember}>
+          <NavLink className={style.login} onClick={requestLoginMember}>
             로그인
           </NavLink>
           <NavLink className={style.join} to="/join">
